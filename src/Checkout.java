@@ -32,7 +32,7 @@ public class Checkout {
             }
         }
 
-        if (hasEnoughBalance()) {
+        if (!hasEnoughBalance()) {
             System.out.println("Insufficient balance.");
             return;
         }
@@ -49,7 +49,7 @@ public class Checkout {
 
 
     public boolean hasEnoughBalance() {
-        return recipetCalacualtor.getTotalAmount() >= customer.getBalance();
+        return Double.compare(customer.getBalance(), recipetCalacualtor.getTotalAmount()) >= 0;
     }
 
     private List<Product> getShippableItems() {
